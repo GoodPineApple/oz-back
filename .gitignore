@@ -2,3 +2,4 @@
 node_modules/
 base/results/
 base/crawl_results/
+.env
