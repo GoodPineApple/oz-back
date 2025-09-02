@@ -19,7 +19,6 @@ let products = [
  * Body: {}
  */
 router.get("/", (req, res) => {
-    console.log(`${req.method} ${req.baseUrl}${req.path}`);
     res.json(products);
 });
 
@@ -31,7 +30,6 @@ router.get("/", (req, res) => {
  * Body: {}
  */
 router.post("/", (req, res) => {
-    console.log(`${req.method} ${req.baseUrl}${req.path}`);
     const product = req.body;
     productId++;
     product.id = productId;
@@ -47,7 +45,6 @@ router.post("/", (req, res) => {
  * Body: {}
  */
 router.put("/:id", (req, res) => {
-    console.log(`${req.method} ${req.baseUrl}${req.path}`);
     const userProduct = req.body;
     userProduct.id = Number(req.params.id);
     const index = products.findIndex((product) => product.id === userProduct.id);
@@ -63,7 +60,6 @@ router.put("/:id", (req, res) => {
  * Body: {}
  */
 router.patch("/:id", (req, res) => {
-    console.log(`${req.method} ${req.baseUrl}${req.path}`);
     const userPatch = req.body;
     const updateId = Number(req.params.id);
     const index = products.findIndex((product) => product.id === updateId);
@@ -80,7 +76,6 @@ router.patch("/:id", (req, res) => {
  * Body: {}
  */
 router.delete("/:id", (req, res) => {
-    console.log(`${req.method} ${req.baseUrl}${req.path}`);
     const deleteId = Number(req.params.id);
     products = products.filter((product) => product.id !== deleteId);
     res.json({ message: "Product deleted successfully" });

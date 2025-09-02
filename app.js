@@ -2,6 +2,7 @@
 import express from "express";
 import indexRouter from "./routes/index-router.js";
 import productsRouter from "./routes/products-router.js";
+import routeLog from "./middleware/route-log.js";
 
 const app = express();
 const PORT = 3000;
@@ -9,6 +10,7 @@ const PORT = 3000;
 app.use(express.static("public"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(routeLog);
 app.use("/", indexRouter);
 app.use("/products", productsRouter);
 
