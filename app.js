@@ -2,6 +2,7 @@
 import express from "express";
 import indexRouter from "./routes/index-router.js";
 import productsRouter from "./routes/products-router.js";
+import authRouter from "./routes/auth-router.js";
 import routeLog from "./middleware/route-log.js";
 import errorHandler from "./middleware/error-handler.js";
 import notFoundHandler from "./middleware/not-found-handler.js";
@@ -19,6 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(routeLog);
 app.use("/", indexRouter);
 app.use("/products", productsRouter);
+app.use("/auth", authRouter);
 
 app.use(notFoundHandler);
 app.use(errorHandler);
