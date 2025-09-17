@@ -3,7 +3,7 @@ import express from "express";
 import indexRouter from "./routes/index-router.js";
 import productsRouter from "./routes/products-router.js";
 import authRouter from "./routes/auth-router.js";
-import routeLog from "./middleware/route-log.js";
+import routeLog from ". /middleware/route-log.js";
 import errorHandler from "./middleware/error-handler.js";
 import notFoundHandler from "./middleware/not-found-handler.js";
 import dotenv from "dotenv";

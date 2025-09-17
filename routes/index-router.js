@@ -3,7 +3,7 @@ import express from "express";
 const router = express.Router();
 
 router.get("/", (req, res) => {
-    console.log("Hello World");
+    console.log("Hello!!!!!!");
     
     // 강제 에러 발생 - 여러 가지 방법
     

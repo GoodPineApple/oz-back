@@ -11,12 +11,12 @@ DynamicScrapper.crawl();
 // const respJson = await StaticScrapper.crawl(crawlUrl);
 // StaticScrapper.save(respJson);
 
-// import hello from "./hello/hello.js";
-// import testFS from "./hello/fs.js";
-// import TxtManager from "./hello/TxtManager.js";
+import hello from "./hello/hello.js";
+import testFS from "./hello/fs.js";
+import TxtManager from "./hello/TxtManager.js";
 
-// hello();
-// testFS();
+hello();
+testFS();
 
 // TxtManager.makeTxtFile("test.txt", "Hello Worldfdfdfdfd", true);
 // TxtManager.readTxtFile("test.txt");
