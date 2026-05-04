@@ -313,12 +313,11 @@ async function crawl(options = {}) {
   return posts;
 }
 
-export {
-  crawl,
-  extractListItems,
-  scrollFeedUntilStable,
-  keywordFromListUrl,
-  savePostsJson,
-  sanitizeFileSegment,
-  formatDateForFilename,
-};
+async function crawlNaverBlog(keyword) {
+  const prefixUrl =
+    "https://search.naver.com/search.naver?ssc=tab.blog.all&sm=tab_jum&query=";
+  const listUrl = prefixUrl + encodeURIComponent(keyword);
+  return crawl({ listUrl });
+}
+
+export { crawl, crawlNaverBlog };

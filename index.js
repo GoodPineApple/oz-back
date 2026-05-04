@@ -2,8 +2,9 @@
 // const { main } = require("./base/sum");
 // const { logMessage } = require("./base/LogManager");
 // import { crawl } from "./base/scrapper/static-scrapper.js";
-import { crawl } from "./base/scrapper/dynamic-scrapper.js";
+import { crawl, crawlNaverBlog } from "./base/scrapper/dynamic-scrapper.js";
 
-crawl();
+crawlNaverBlog("물병");
+// crawl();
 // main();
 // testCreateFiles();
