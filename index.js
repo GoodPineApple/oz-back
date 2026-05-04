@@ -1,7 +1,6 @@
 const { testCreateFiles } = require("./base/FileManager");
 const { main } = require("./base/sum");
 const { logMessage } = require("./base/LogManager");
-
 // main();
 // testCreateFiles();
 logMessage("이건 메세지5");
