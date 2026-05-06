@@ -5,7 +5,7 @@
 // import { crawl, crawlNaverBlog } from "./base/scrapper/dynamic-scrapper.js";
 // crawlNaverBlog("물병");
 
-import { crawl } from "./base/scrapper/yozm-scrapper.js";
+import { crawl } from "./scrapper/yozm-scrapper.js";
 crawl();
 // crawl();
 // main();
