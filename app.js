@@ -7,6 +7,9 @@ const PORT = 3000;
 app.use(express.static("public"));
 
 app.get("/", (req, res) => {
+  const reqUrl = req.url;
+  const reqMethod = req.method;
+  console.log(reqUrl, reqMethod);
   res.send("Hello World");
 });
 
