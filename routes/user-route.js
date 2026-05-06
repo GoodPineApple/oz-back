@@ -20,4 +20,15 @@ router.get("/:id", (req, res) => {
   res.json(user);
 });
 
+// POST /users 데이터 생성
+// {
+//     "id": 4,
+//     "name": "taem"
+// }
+router.post("/", (req, res) => {
+  const newUser = req.body;
+  users.push(newUser);
+  res.status(201).json(newUser);
+});
+
 export default router;
