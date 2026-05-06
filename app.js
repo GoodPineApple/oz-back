@@ -13,6 +13,7 @@ app.get("/posts", (req, res) => {
     { id: 1, title: "Hello World" },
     { id: 2, title: "Hello World" },
     { id: 3, title: "Hello World" },
+    { id: 4, title: "Hello World" },
   ];
   res.json(posts);
 });

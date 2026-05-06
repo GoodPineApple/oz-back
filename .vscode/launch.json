@@ -7,7 +7,10 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "프로그램 시작",
+      "name": "프로그램 시작 (nodemon)",
+      "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/nodemon",
+      "restart": true,
+      "console": "integratedTerminal",
       "skipFiles": ["<node_internals>/**"],
       "program": "${workspaceFolder}/app.js"
     }
