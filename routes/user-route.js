@@ -16,7 +16,7 @@ router.get("/", (req, res) => {
 // GET /users/:id 데이터 조회
 router.get("/:id", (req, res) => {
   const userId = req.params.id;
-  const user = users.find((user) => user.id === userId);
+  const user = users.find((user) => user.id === Number(userId));
   res.json(user);
 });
 
