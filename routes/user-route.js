@@ -43,4 +43,11 @@ router.put("/:id", (req, res) => {
   res.json(updatedUser);
 });
 
+// DELETE /users/:id 데이터 삭제
+router.delete("/:id", (req, res) => {
+  const userId = req.params.id;
+  users.splice(Number(userId) - 1, 1);
+  res.status(204).send();
+});
+
 export default router;
