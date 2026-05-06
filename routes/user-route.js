@@ -31,4 +31,16 @@ router.post("/", (req, res) => {
   res.status(201).json(newUser);
 });
 
+// PUT /users/:id 데이터 수정
+// {
+//     "id": 3,
+//     "name": "taem"
+// }
+router.put("/:id", (req, res) => {
+  const userId = req.params.id;
+  const updatedUser = req.body;
+  users[Number(userId) - 1] = updatedUser;
+  res.json(updatedUser);
+});
+
 export default router;
