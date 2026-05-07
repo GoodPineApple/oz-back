@@ -1,6 +1,7 @@
 // express의 부트스트랩 파일
 import express from "express";
 import userRoute from "./routes/user-route.js";
+import postRoute from "./routes/post-route.js";
 
 const app = express();
 const PORT = 3000;
@@ -9,6 +10,7 @@ app.use(express.static("public"));
 app.use(express.json());
 
 app.use("/users", userRoute);
+app.use("/posts", postRoute);
 
 app.get("/", (req, res) => {
   const reqUrl = req.url;
