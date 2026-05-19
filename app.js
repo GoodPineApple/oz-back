@@ -5,22 +5,6 @@ import express from "express";
 import userRoute from "./routes/user-route.js";
 import postRoute from "./routes/post-route.js";
 
-import dotenv from "dotenv";
-dotenv.config();
-
-import { createClient } from "redis";
-
-const client = createClient({
-  username: process.env.REDIS_USERNAME,
-  password: process.env.REDIS_PASSWORD,
-  socket: {
-    host: process.env.REDIS_HOST,
-    port: process.env.REDIS_PORT,
-  },
-});
-client.on("error", (err) => console.log("Redis Client Error", err));
-await client.connect();
-
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const app = express();

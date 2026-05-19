@@ -1,5 +1,5 @@
 import express from "express";
-
+import redis from "../lib/redis.js";
 const router = express.Router();
 
 const users = [
@@ -9,8 +9,11 @@ const users = [
 ];
 
 // GET /users 데이터 조회
-router.get("/", (req, res) => {
-  res.json(users);
+router.get("/", async (req, res) => {
+  redis.set("foo", "bar");
+  const result = await redis.get("foo");
+  console.log(result);
+  // res.json(users);
 });
 
 // GET /users/:id 데이터 조회
