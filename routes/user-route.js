@@ -10,10 +10,24 @@ const users = [
 
 // GET /users 데이터 조회
 router.get("/", async (req, res) => {
-  redis.set("foo", "bar");
-  const result = await redis.get("foo");
-  console.log(result);
-  // res.json(users);
+  // redis에서 users가 있는지 확인
+  const usersFromRedis = await redis.get("users");
+
+  // 1. redis에 없으면 users 조회
+  // redis에 users 저장
+  // users 반환
+  if (!usersFromRedis) {
+    const usersFromDB = users;
+    await redis.set("users", JSON.stringify(usersFromDB));
+    res.json(usersFromDB);
+  }
+
+  // 2. redis에 있으면
+  // redis에서 users 조회
+  // users 반환
+  if (usersFromRedis) {
+    res.json(users);
+  }
 });
 
 // GET /users/:id 데이터 조회
