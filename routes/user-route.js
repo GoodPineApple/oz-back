@@ -1,5 +1,5 @@
 import express from "express";
-import redis from "../lib/redis.js";
+import { getCache, setCache } from "../lib/redis.js";
 const router = express.Router();
 
 const users = [
@@ -11,29 +11,26 @@ const users = [
 // GET /users 데이터 조회
 router.get("/", async (req, res) => {
   // redis에서 users가 있는지 확인
-  const usersFromRedis = await redis.get("users");
-
-  // 1. redis에 없으면 users 조회
-  // redis에 users 저장
-  // users 반환
-  if (!usersFromRedis) {
-    const usersFromDB = users;
-    await redis.set("users", JSON.stringify(usersFromDB));
-    res.json(usersFromDB);
+  const usersCache = await getCache("users");
+  if (usersCache) {
+    // redis에 있으면 캐싱한 값으로 반환
+    return res.json(users);
   }
-
-  // 2. redis에 있으면
-  // redis에서 users 조회
-  // users 반환
-  if (usersFromRedis) {
-    res.json(users);
-  }
+  // redis에 없으면 DB에서 조회 후 반환
+  const usersFromDB = users;
+  await setCache("users", JSON.stringify(usersFromDB), 60);
+  res.json(usersFromDB);
 });
 
 // GET /users/:id 데이터 조회
-router.get("/:id", (req, res) => {
+router.get("/:id", async (req, res) => {
+  const userCache = await getCache(`users:${req.params.id}`);
+  if (userCache) {
+    return res.json(userCache);
+  }
   const userId = req.params.id;
   const user = users.find((user) => user.id === Number(userId));
+  await setCache(`users:${req.params.id}`, JSON.stringify(user), 60);
   res.json(user);
 });
 
